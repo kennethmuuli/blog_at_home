@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    
+
     <article>
         <h1>
             {!! $post->title !!}
