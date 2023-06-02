@@ -23,8 +23,8 @@ class PostFactory extends Factory
             'category_id' => Category::factory(),
             'title' => fake()->sentence(),
             'slug' => fake()->slug(),
-            'excerpt' => fake()->sentences(2, true),
-            'body' => fake()->paragraphs(2, true)
+            'excerpt' => collect($this->faker->paragraphs(2))->map(fn($item) => "<p>{$item}</p>")->implode(''),
+            'body' => collect($this->faker->paragraphs(6))->map(fn($item) => "<p>{$item}</p>")->implode(''),
         ];
     }
 }
