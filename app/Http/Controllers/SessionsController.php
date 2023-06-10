@@ -20,20 +20,13 @@ class SessionsController extends Controller
 
         ]);
 
-        if (auth()->attempt($attributes))
+        if (! auth()->attempt($attributes))
         {
-            session()->regenerate();
-            // Above against sessions fixation attacks
-            return redirect('/')->with('success', 'Logged In');
+            throw ValidationException::withMessages(['email' => 'Your provided ceredentials could not be verified.']);
         }
 
-        // Method 2
-        throw ValidationException::withMessages(['email' => 'Your provided ceredentials could not be verified.']);
-
-        // //  Method 1
-        // return back()
-        //     ->withInput()
-        //     ->withErrors(['email' => 'Your provided ceredentials could not be verified.']);
+        session()->regenerate();
+        return redirect('/')->with('success', 'Logged In');
     }
 
     public function destroy()
