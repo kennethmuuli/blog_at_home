@@ -17,7 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
+    //protected $guarded = []; <- set in App/Providers/AppServiceProvider Model::unquarded();
 
     /**
      * The attributes that should be hidden for serialization.

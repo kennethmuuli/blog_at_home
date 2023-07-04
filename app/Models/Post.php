@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    //protected $guarded = []; <- set in App/Providers/AppServiceProvider Model::unquarded();
     // protected $fillable = ['title', 'excerpt', 'body', 'id'];
 
     protected $with = ['category', 'author'];
